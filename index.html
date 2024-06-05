@@ -16,8 +16,28 @@
         header {
             background-color: rgba(0, 0, 0, 0.7);
             color: #fff;
-            padding: 20px 0;
-            text-align: center;
+            padding: 20px;
+        }
+        .header-content {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .header-left {
+            display: flex;
+            align-items: center;
+        }
+        .header-left img {
+            width: 150px; /* Ajusta el tamaño de la imagen aquí */
+            height: auto;
+            margin-right: 20px; /* Añadir espacio a la derecha de la imagen */
+            border-radius: 30px;
+        }
+        .header-right {
+            margin-left: 20px;
+        }
+        nav {
+            margin-top: 10px;
         }
         nav ul {
             list-style: none;
@@ -41,6 +61,8 @@
             background: rgba(255, 255, 255, 0.8);
             border-radius: 10px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            margin-top: 40px; /* Añadir margen superior */
+            margin-bottom: 40px; /* Añadir margen inferior */
         }
         section {
             margin-bottom: 40px;
@@ -53,33 +75,8 @@
         .project {
             margin-bottom: 20px;
         }
-        form {
-            max-width: 400px;
-            margin: auto;
-        }
-        label {
-            display: block;
-            margin-bottom: 8px;
-            font-weight: bold;
-        }
-        input, textarea {
-            width: 100%;
-            padding: 10px;
-            margin-bottom: 10px;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-        }
-        button {
-            background-color: #1f4037;
-            color: #fff;
-            border: none;
-            padding: 10px 20px;
-            cursor: pointer;
-            border-radius: 4px;
-        }
-        button:hover {
-            background-color: #99f2c8;
-            color: #1f4037;
+        canvas {
+            max-width: 100%;
         }
         footer {
             text-align: center;
@@ -90,18 +87,23 @@
         audio {
             margin-top: 20px;
         }
+        h4 {
+            margin-left: 100px;
+        }
     </style>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
     <header>
-        <nav>
-            <h1>José Manuel Pérez Moriana</h1>
-            <ul>
-                <li><a href="#about">Sobre mí</a></li>
-                <li><a href="#projects">Proyectos</a></li>
-                <li><a href="#contact">Contacto</a></li>
-            </ul>
-        </nav>
+        <div class="header-content">
+            <div class="header-left">
+                <img src="img/yo.jpg" alt="José Manuel Pérez Moriana">
+                <div class="header-right">
+                    <h1>José Manuel Pérez Moriana</h1>
+                    <h4>Email: xemitawow@gmail.com</h4>
+                </div>
+            </div>
+        </div>
     </header>
     <main>
         <section id="about">
@@ -111,51 +113,64 @@
             <p>Actualmente, estoy cursando el Ciclo Formativo de Grado Superior en Desarrollo de Aplicaciones Multiplataforma (DAM) en CoreNetwork, un centro especializado en ciclos formativos superiores, donde he adquirido conocimientos en lenguajes de programación como Java, y JavaScript, así como diseño de bases de datos. Mi formación se complementa con el aprendizaje continuo de nuevas tecnologías y metodologías de desarrollo ágil. Más especializado en Java.</p>
             <p>Además de mi formación académica, he participado en varios proyectos personales y colaborativos que me han permitido aplicar mis conocimientos y aprender nuevas habilidades. Entre mis proyectos destacados se encuentran:</p>
             <ul>
-                <li><strong>Proyecto de Gestión de Parking:</strong> Una aplicación en la cual hemos estado gestionando el sistema de entrada, salida y gestión de un parking. Comprobar que no hay repetidos, comprobar las matrículas, los colores de los coches etc....</li>
+                <li><strong>Proyecto de Gestión de Parking:</strong> Una aplicación en la cual hemos estado gestionando el sistema de entrada, salida y gestión de un parking. Comprobar que no hay repetidos, comprobar las matrículas, los colores de los coches etc.... <a href="https://github.com/JosePeMo/Parking">Aquí</a> para ver el proyecto.</li>
                 <li><strong>App de creación de personajes: </strong> Una aplicación en la que podemos crear nuestro propio personaje y sea como tú desees. Hay varias opciones de las cuales son o crear el personaje con las estadisiticas que tú quieras o elegir una clase ya prediseñada. Tambien implementado un sistema de combates entre 4 enemigos creado por mí.</li>
             </ul>
             <p>Me considero una persona proactiva, con una gran capacidad de adaptación y un fuerte deseo de superación personal y profesional.</p>
             <p>Mi objetivo es convertirme en un desarrollador de software altamente competente y contribuir a proyectos innovadores que puedan tener un impacto positivo en la sociedad. Estoy abierto a nuevas oportunidades de aprendizaje y colaboración en el campo del desarrollo de software.</p>
         </section>
-        <section id="projects">
-            <h2>Proyectos</h2>
-            <div class="project">
-                <h3>Proyecto de Gestión de Parking</h3>
-                <a href="https://github.com/JosePeMo/Parking">Git del proyecto</a>
-            </div>
-            <div class="project">
-                <h3>App de creación de personajes</h3>
-                <p>Descripción del proyecto 2.</p>
-            </div>
-        </section>
-        <section id="contact">
-            <h2>Contacto</h2>
-            <p>Para cualquier consulta, puedes contactarme a través del siguiente formulario:</p>
-            <form id="contact-form">
-                <label for="name">Nombre:</label>
-                <input type="text" id="name" name="name" required>
-                
-                <label for="email">Email:</label>
-                <input type="email" id="email" name="email" required>
-                
-                <label for="message">Mensaje:</label>
-                <textarea id="message" name="message" required></textarea>
-                
-                <button type="submit">Enviar</button>
-            </form>
+        <section id="skills">
+            <h2>Competencias</h2>
+            <canvas id="skillsChart"></canvas>
         </section>
     </main>
     <footer>
         <p>&copy; 2024 José Manuel Pérez Moriana</p>
-        <audio controls>
-            <source src="ruta/a/tu/cancion.mp3" type="audio/mpeg">
-            Tu navegador no soporta el elemento de audio.
-        </audio>
     </footer>
     <script>
-        document.getElementById('contact-form').addEventListener('submit', function(event) {
-            event.preventDefault();
-            alert('Formulario enviado. ¡Gracias por contactarme!');
+        document.addEventListener('DOMContentLoaded', function() {
+            const ctx = document.getElementById('skillsChart').getContext('2d');
+            const skillsChart = new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: ['Español', 'Linux', 'Windows', 'Java', 'Máquinas Virtuales', 'HTML', 'Ingles', 'JavaScript', 'Mysql'],                    datasets: [{
+                        label: 'Nivel de compentecia',
+                        data: [100, 85, 80, 75, 70, 65, 60, 60, 55], // Niveles ajustados según tus habilidades
+                        backgroundColor: [
+                            'rgba(255, 99, 132, 0.2)',
+                            'rgba(54, 162, 235, 0.2)',
+                            'rgba(255, 206, 86, 0.2)',
+                            'rgba(75, 192, 192, 0.2)',
+                            'rgba(153, 102, 255, 0.2)',
+                            'rgba(255, 159, 64, 0.2)',
+                            'rgba(199, 199, 199, 0.2)',
+                            'rgba(83, 102, 255, 0.2)',
+                            'rgba(255, 206, 132, 0.2)'
+                        ],
+                        borderColor: [
+                            'rgba(255, 99, 132, 1)',
+                            'rgba(54, 162, 235, 1)',
+                            'rgba(255, 206, 86, 1)',
+                            'rgba(75, 192, 192, 1)',
+                            'rgba(153, 102, 255, 1)',
+                            'rgba(255, 159, 64, 1)',
+                            'rgba(199, 199, 199, 1)',
+                            'rgba(83, 102, 255, 1)',
+                            'rgba(255, 206, 132, 1)'
+                        ],
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    indexAxis: 'y', // Cambiar el eje a vertical
+                    scales: {
+                        x: {
+                            beginAtZero: true,
+                            max: 100 // Configurar el eje x para que tenga un máximo de 100
+                        }
+                    }
+                }
+            });
         });
     </script>
 </body>
